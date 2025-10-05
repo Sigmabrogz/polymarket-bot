@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { inMemoryStore } from '../repositories/memoryStore';
 
-export const marketsRouter = Router();
+export const marketsRouter: Router = Router();
 
 marketsRouter.get('/', (req, res) => {
   const { category, search } = req.query;

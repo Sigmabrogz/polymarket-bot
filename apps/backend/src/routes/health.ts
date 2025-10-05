@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { testConnectivity } from '../lib/network';
 
-export const healthRouter = Router();
+export const healthRouter: Router = Router();
 
 healthRouter.get('/', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });

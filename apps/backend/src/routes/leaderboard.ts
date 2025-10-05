@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { leaderboardService } from '../services/leaderboardService';
 
-export const leaderboardRouter = Router();
+export const leaderboardRouter: Router = Router();
 
 leaderboardRouter.get('/', (req, res) => {
   const { window } = req.query;

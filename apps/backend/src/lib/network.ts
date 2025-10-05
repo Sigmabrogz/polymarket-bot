@@ -1,22 +1,9 @@
 import dns from 'node:dns';
 import { setTimeout as sleep } from 'node:timers/promises';
-import https from 'node:https';
-import http from 'node:http';
 import { logger } from './logger';
 
 // Force IPv4-first to avoid IPv6 path issues
 dns.setDefaultResultOrder?.('ipv4first');
-
-const httpsAgent = new https.Agent({ 
-  keepAlive: true, 
-  maxSockets: 100,
-  timeout: 8000
-});
-const httpAgent = new http.Agent({ 
-  keepAlive: true, 
-  maxSockets: 100,
-  timeout: 8000
-});
 
 type FetchOpts = {
   timeoutMs?: number; // connect+TLS+TTFB
@@ -36,7 +23,6 @@ export async function safeFetch(url: string, init: RequestInit = {}, opts: Fetch
     try {
       const res = await fetch(url, {
         ...init,
-        agent: (url.startsWith('https') ? httpsAgent : httpAgent) as any,
         signal: controller.signal,
         headers: { 
           'user-agent': 'polyburg/1.0',

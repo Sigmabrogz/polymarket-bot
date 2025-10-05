@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Express } from 'express';
 import cors from 'cors';
 import { healthRouter } from './routes/health';
 import { marketsRouter } from './routes/markets';
@@ -7,7 +7,7 @@ import { walletsRouter } from './routes/wallets';
 import { feedRouter } from './routes/feed';
 import { logger } from './lib/logger';
 
-export const buildApp = () => {
+export const buildApp = (): Express => {
   const app = express();
 
   app.use(cors());

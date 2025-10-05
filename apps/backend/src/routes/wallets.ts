@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { inMemoryStore } from '../repositories/memoryStore';
 
-export const walletsRouter = Router();
+export const walletsRouter: Router = Router();
 
 walletsRouter.get('/:address', (req, res) => {
   const address = req.params.address.toLowerCase();
