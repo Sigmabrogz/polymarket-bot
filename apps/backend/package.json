@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc -p tsconfig.build.json",
+    "build": "cd ../../packages/shared && pnpm build && cd ../../apps/backend && tsc -p tsconfig.build.json",
     "start": "node dist/index.js",
     "lint": "echo 'backend lint placeholder'"
   },
