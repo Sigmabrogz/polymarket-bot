@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "apps/backend/src/index.ts",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["apps/backend/src/**"]
+      }
+    },
+    {
+      "src": "apps/web/package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "apps/backend/src/index.ts"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "apps/web/$1"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
