@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
   
   // For now, return empty data since we can't reach Polymarket APIs
   // In production, this would fetch from the actual APIs
-  const markets = [];
+  const markets: any[] = [];
   
   let filteredMarkets = markets;
   
